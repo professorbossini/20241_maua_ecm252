@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Estruturais</title>
+</head>
+<style>
+  /* .div{
+    background-color: blueviolet;
+    display: inline;
+  }
+  .span{
+    background-color: green;
+    display: block;
+  } */
+</style>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div>1</div>
+      </div>
+      <div class="col-4">
+        <div>2</div>
+      </div>
+      <div class="col-4">
+        <div>3</div>
+      </div>
+    </div>
+    <div class="row">
+      <div>5</div>
+    </div>
+  </div>
+
+  <article></article>
+  <div></div>
+  <div class="sm:w-full xl:w-75">
+    
+  </div>
+  <!-- <div class="div">a</div>
+  <div class="div"div>b</div>
+  <span class="span">a</span>
+  <span class="span">b</span> -->
+  <!-- esse é um menu de opções -->
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>Vagas</li>
+      <li>Meu cadastro</li>
+      <li>Sair</li>
+    </ul>
+    
+  </nav>
+
+  <main>
+    <!-- esse é o cabeçalho principal da página -->
+    <header>
+      <h1>Portal de oportunidades</h1>
+      <p>Encontre novas vagas. Atualizado diariamente</p>
+    </header>
+  
+    <section>
+      <ul>
+        <li>
+          <!-- essa é uma vaga de emprego -->
+          <article>
+            <h2>Desenvolvedor Javascript</h2>
+            <p>Salário: R$4000</p>
+            <p>
+              Experiência com dev Front End.
+            </p>
+            <p>
+              Data de publicação: 22/03/2023
+            </p>
+          </article>
+        </li>
+        <li>
+          <!-- essa é mais uma vaga -->
+          <article>
+            <h2>Desenvolvedor Java</h2>
+            <p>Salário: R$4500</p>
+            <p>
+              Experiência com dev Back End.
+            </p>
+            <p>
+              Data de publicação: 23/03/2023
+            </p>
+          </article>
+        </li>
+      </ul>
+    </section>
+  
+    <!-- essa é uma barra lateral de anúncios -->
+  
+    
+  </main>
+
+  <aside>
+    
+    <!-- primeiro anúncio -->
+    <article>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, expedita?</p>
+    </article>
+  
+    <!-- segundo anúncio -->
+    <article>
+      <p class="esseaqui anuncio">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, doloremque!
+      </p>
+      <button id="botao" onclick="f()">Vai</button>
+    </article>
+  
+  </aside>
+
+
+  <footer>
+    <p>Esse é o rodapé</p>
+  </footer>
+
+
+  <script>
+    const f =  () => {
+      const b = document.querySelector('.esseaqui')
+      b.innerHTML = "oi"
+    }
+  </script>
+</body>
+</html>
