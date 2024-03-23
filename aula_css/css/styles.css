@@ -1,0 +1,58 @@
+ /* seletores CSS */
+/* #titulo{
+  color: green;
+  text-align: center;
+} */
+
+p#descricao{
+  color: blue;
+}
+
+p.promocao{
+  text-align: center;
+  background-color: lightgreen;
+}
+
+h1.promocao{
+  color: yellow;
+}
+
+.nova{
+  color: white;
+}
+
+p.final-pagina#rodape{
+  background-color: lightgray;
+  text-align: center;
+}
+
+.novo-curso{
+  color: red;
+}
+
+.curso , .novo-curso, #contato{
+  background-color: #f0f8ff;
+}
+
+/* .novo-curso{
+  background-color: aliceblue;
+  color: red;
+}
+
+.curso{
+  background-color: aliceblue;
+} */
+
+
+
+ /* p {
+   color: blue;
+ }
+
+ h1 {
+   color: green;
+ }
+
+ strong {
+   color: red;
+ } */
