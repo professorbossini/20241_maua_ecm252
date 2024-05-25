@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import bootstrap from 'bootstrap/dist/js/bootstrap'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import Modal from './Modal'
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -73,6 +75,9 @@ class App extends React.Component{
         this.setState({
           mensagemDeErro: 'Jovem usuário, permita o acesso à localização'
         })
+        const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
+        myModal.show()
+        
       }
   )
 
@@ -105,6 +110,10 @@ class App extends React.Component{
                     className='btn btn-outline-primary w-100 mt-2'>
                     Qual a minha estação?
                   </button>
+                <Modal />
+                <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Launch demo modal
+                </button>
               </div>
             </div>
           </div>
