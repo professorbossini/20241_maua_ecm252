@@ -3,18 +3,43 @@ import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import bootstrap from 'bootstrap/dist/js/bootstrap'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import Modal from './Modal'
+// import Modal from './Modal'
+import EstacaoClimatica from './EstacaoClimatica'
+import Loading from './Loading'
 class App extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     latitude: null,
+  //     longitude: null,
+  //     estacao: null,
+  //     data: null,
+  //     icone: null,
+  //     mensagemDeErro: null
+  //   }
+  //   console.log('constructor')
+  // }
+
+  state = {
       latitude: null,
       longitude: null,
       estacao: null,
       data: null,
       icone: null,
       mensagemDeErro: null
-    }
+  }
+
+  componentDidMount(){
+    //console.log('componentDidMount')
+    // this.obterLocalizacao()
+  }
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate')
+  }
+
+  componentWillUnmount(){
+    console.log('componentWillUnmount')
   }
 
   icones = {
@@ -44,9 +69,9 @@ class App extends React.Component{
     return estouNoSul ? 'Outono' : 'Primavera'
   }
 
-  // componentDidMount(){
-  //   this.obterLocalizacao()
-  // }
+  componentDidMount(){
+    this.obterLocalizacao()
+  }
 
   obterLocalizacao = () => {
     //1 Obter a localização do usuário
@@ -56,6 +81,7 @@ class App extends React.Component{
         const dataAtual = new Date()
         //3 Obter a estação climática do usuário
         const estacao = this.obterEstacao(dataAtual, position.coords.latitude)
+        console.log(position.coords)
         //4 Obter o nome do ícone
         const icone = this.icones[estacao]
         //5 Usar a função setState (qualifique com this) atualizando o estado da aplicação
@@ -75,47 +101,43 @@ class App extends React.Component{
         this.setState({
           mensagemDeErro: 'Jovem usuário, permita o acesso à localização'
         })
-        const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
-        myModal.show()
+        // const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
+        // myModal.show()
         
       }
   )
 
+  
+
   }
   render(){
+    console.log('render')
     return(
       <div
         className='container mt-2'>
         <div className='row justify-content-center'>
           <div className='col-sm-12 col-md-8'>
-            <div className='card'>
-              <div 
-                className='card-body'>
-                  <div 
-                    className='d-flex align-items-center justify-content-center'>
-                    <i className={`${this.state.icone} fa-5x`}></i>
-                    <p className='w-75 ms-3 text-center fs-1'>{this.state.estacao}</p>
-                  </div>
-                  <p className='text-center'>
-                    {
-                      this.state.latitude ?
-                      `Coordenadas: ${this.state.latitude}, ${this.state.longitude}. Data: ${this.state.data}` :
-                      this.state.mensagemDeErro ?
-                      `${this.state.mensagemDeErro}` :
-                      `Clique no botão para saber a sua estação climática`  
-                    }
-                  </p>
-                  <button
-                    onClick={this.obterLocalizacao}
-                    className='btn btn-outline-primary w-100 mt-2'>
-                    Qual a minha estação?
-                  </button>
-                <Modal />
-                <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Launch demo modal
-                </button>
-              </div>
-            </div>
+            {
+              (!this.state.latitude && !this.state.mensagemDeErro) ?
+
+                <Loading mensagem="Permita acesso à localização"/>                
+              :
+
+              this.state.mensagemDeErro ?
+                <p className='border rounded p-2 fs-1 text-center'>
+                  É preciso dar a permissão...
+                </p>
+              :
+
+              <EstacaoClimatica 
+                icone={this.state.icone}
+                estacao={this.state.estacao}
+                latitude={this.state.latitude}
+                longitude={this.state.longitude}
+                data={this.state.data}
+                mensagemDeErro={this.state.mensagemDeErro}
+                obterLocalizacao={this.obterLocalizacao}/>
+            }
           </div>
         </div>
       </div>
